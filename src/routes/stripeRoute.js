@@ -1,0 +1,13 @@
+const stripeController = require("../controllers/stripe");
+const express = require("express");
+const stripeRouter = express.Router();
+stripeRouter.route("/connect/:id").post(stripeController.connect);
+stripeRouter.route("/createIntent").post(stripeController.createIntent);
+stripeRouter.route("/accounts/:userId").get(stripeController.getStripeBankAccount);
+stripeRouter.route("/payout/:userId").post(stripeController.stripePayout);
+stripeRouter.route("/balance/:userId").get(stripeController.stripePayoutBalance);
+stripeRouter.route("/capturepayment").post(stripeController.captureCardTokenPayment);
+stripeRouter.route("/customconnect").post(stripeController.customConnect);
+stripeRouter.route("/accountstatus/:id").get(stripeController.stripeAccountStatus);
+stripeRouter.route("/deleteaccount/:id").get(stripeController.deleteAccount);
+module.exports = stripeRouter; 
